@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+delete=
+lang=
+edit=
+genrate=
+view=
+TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
+function show_usage() 
+{
+    echo '
+Usage: [-a] [-d] [-e] [-g] [-h] [-l LANG] [-v]
+
+Optional Arguments:
+    
+-a , --all : display available gitignore template list
+-d , --delete : delete default  gitignore template for given -l LANG
+-e , --edit : Edit the default gitignore template for given -l LANG
+-g , --generate : generate new gitignore template or append if already exist for given -l LANG
+-h , --help : show this help message and exit
+-l LANG, --lang LANG : Specify language(full name not just extension) to generate their respective gitignore template
+-v, --view : view gitignore template for given -l LANG in less mode
+Examples:
+$ gig -l python -e  #edit the default python gitignore template 
+$ gig -l node   -v  #view default node gitignore template
+$ gig -l c++ -g     #generate c++ gitignore template in present directory for c++(append content if already exist)    
+$ gig --all
+actionscript.gitignore
+ada.gitignore          
+android.gitignore
+...
+...
+    '
+}
+
+function is_exist()
+{
+    if [ ! -f "$TEMPLATE_DIR/$lang.gitignore" ];then
+        echo "Not a valid language name(should use full name): for more info try  gig --help"
+        exit 1
+    fi
+}
+function main()
+{
+    while [ $# -gt 0 ]; do
+        case $1 in 
+            -h|--help)
+                show_usage
+                exit
+                ;;
+            -l|--lang)
+                lang=$2
+                is_exist $lang
+                shift
+                ;;
+            -a|--all)
+                ls $TEMPLATE_DIR/*.gitignore | xargs -n 1 basename
+                exit 0
+                ;;
+            -v|--view)
+                view=1
+                shift
+                ;;
+            -e|--edit)
+                edit=1
+                shift
+                ;;
+            -g|--generate)
+                generate=1
+                shift
+                ;;
+            -d|--delete)
+                delete=1
+                shift
+                ;;
+            -?*)
+                printf 'WARNING: Unknown option (ignored): %s\n' "$1" >&2
+                shift
+                ;;
+
+            *)
+                shift
+                ;;
+        esac
+    done
+
+    is_exist $lang
+    lang_path="$TEMPLATE_DIR/$lang.gitignore"
+    if [ $view ];then
+        less "$lang_path" ;
+    elif [ $generate ];then
+        cat "$lang_path" >> .gitignore ;
+        echo "added gitignore attributes for $lang !!!" ;
+    elif [ $edit ];then
+        $EDITOR "$lang_path" ;
+    elif [ $delete ];then
+        echo "Do you really want to delete $lang_path (y/n):" ;
+        read ch ;
+        ch=$(echo $ch | tr "A-Z" "a-z") ;
+        if [ $ch = "y" ];then
+            rm "$lang_path" ;
+        fi
+    fi
+}
+main "$@"
