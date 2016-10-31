@@ -2,7 +2,7 @@
 delete=
 lang=
 edit=
-genrate=
+generate=
 view=
 TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
 function show_usage() 
