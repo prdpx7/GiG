@@ -8,7 +8,7 @@ TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
 function show_usage() 
 {
     echo '
-Usage: [-a] [-d] [-e] [-g] [-h] [-l LANG] [-v]
+Usage: [-a] [-d] [-e] [-g] [-h] [-l LANG] [-v] [-u]
 
 Optional Arguments:
     
@@ -19,6 +19,7 @@ Optional Arguments:
 -h , --help : show this help message and exit
 -l LANG, --lang LANG : Specify language(full name not just extension) to generate their respective gitignore template
 -v, --view : view gitignore template for given -l LANG in less mode
+-u, --update : pull recent update
 Examples:
 $ gig -l python -e  #edit the default python gitignore template 
 $ gig -l node   -v  #view default node gitignore template
@@ -71,6 +72,14 @@ function main()
             -d|--delete)
                 delete=1
                 shift
+                ;;
+            -u|--update)
+                if [ ! -d $HOME/.GiG ];then 
+                    echo "looks like you have chosen different clone path"
+                    exit 1
+                fi
+                ~/.GiG/install.sh
+                exit 0
                 ;;
             -?*)
                 printf 'WARNING: Unknown option (ignored): %s\n' "$1" >&2
