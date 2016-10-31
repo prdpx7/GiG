@@ -22,7 +22,7 @@ Optional Arguments:
 Examples:
 $ gig -l python -e  #edit the default python gitignore template 
 $ gig -l node   -v  #view default node gitignore template
-$ gig -l c++ -g     #generate c++ gitignore template in present directory for c++(append content if already exist)    
+$ gig -l c++ -g     #generate c++ gitignore template in present directory(append content if already exist)    
 $ gig --all
 actionscript.gitignore
 ada.gitignore          
@@ -48,7 +48,7 @@ function main()
                 exit
                 ;;
             -l|--lang)
-                lang=$2
+                lang=`echo $2 | tr "A-Z" "a-z"`
                 is_exist $lang
                 shift
                 ;;
