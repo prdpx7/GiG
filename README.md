@@ -1,7 +1,6 @@
-# GiG
 <img src="http://i.imgur.com/m8wVB00.png?1" width=350>
 
-generate gitignore files for almost all languages
+*generate gitignore files for almost all languages*
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zuck007/GiG/master/LICENSE)
 
