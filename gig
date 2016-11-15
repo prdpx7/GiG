@@ -4,7 +4,7 @@ lang=
 edit=
 generate=
 view=
-TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
+TEMPLATE_DIR="$HOME/.GiG/GitIgnoreTemplates"
 function show_usage() 
 {
     echo '
