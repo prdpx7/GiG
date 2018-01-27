@@ -5,6 +5,9 @@ edit=
 generate=
 view=
 TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
+GITIGNORE=".gitignore"
+CREDITS="# This gitignore is generated using https://github.com/zuck007/GiG/"
+
 function show_usage() 
 {
     echo '
@@ -97,8 +100,12 @@ function main()
     if [ $view ];then
         less "$lang_path" ;
     elif [ $generate ];then
-        cat "$lang_path" >> .gitignore ;
-        echo "added gitignore attributes for $lang !!!" ;
+        cat "$lang_path" >> $GITIGNORE ;
+        echo "Added gitignore attributes for $lang !!!" ;
+        first_line=$(head -1 $GITIGNORE)
+        if [ "$first_line" != "$CREDITS" ]; then
+            sed -i "1i$CREDITS" $GITIGNORE
+        fi
     elif [ $edit ];then
         $EDITOR "$lang_path" ;
     elif [ $delete ];then
