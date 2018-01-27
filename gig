@@ -7,7 +7,6 @@ view=
 TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
 GITIGNORE=".gitignore"
 CREDITS="# This gitignore is generated using https://github.com/zuck007/GiG/"
-
 function show_usage() 
 {
     echo '
