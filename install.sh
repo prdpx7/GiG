@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! -d $HOME/.GiG ]; then
-    git clone https://github.com/zuck007/GiG.git ~/.GiG
+    git clone https://github.com/prdpx7/GiG.git ~/.GiG
     
 else
     cd ~/.GiG && git pull origin master && cd -

@@ -2,11 +2,11 @@
 
 *generate gitignore files for almost all languages*
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/zuck007/GiG/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/prdpx7/GiG/master/LICENSE)
 
 ## Installation
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/zuck007/GiG/master/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/prdpx7/GiG/master/install.sh)"
 ```
 ## Usage
 ```
