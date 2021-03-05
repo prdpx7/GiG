@@ -4,7 +4,7 @@ lang=
 edit=
 generate=
 view=
-TEMPLATE_DIR="/home/$USER/.GiG/GitIgnoreTemplates"
+TEMPLATE_DIR="$HOME/.GiG/GitIgnoreTemplates"
 GITIGNORE=".gitignore"
 CREDITS="# This gitignore is generated using https://github.com/prdpx7/GiG/"
 function show_usage() 
